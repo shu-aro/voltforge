@@ -63,7 +63,7 @@ test('Absent and incomplete operating-limit coverage stay explicit, even on a co
 test('AI configuration does not assert a verified connection',()=>{
  assert.equal(copilotAvailability({copilot:{available:false}}).available,false);
  const configured=copilotAvailability({copilot:{available:true,provider:'Example',connection_verified:false}});
- assert.ok(configured.label.includes('unverified'));
+ assert.ok(configured.label.includes('ready')&&!configured.label.includes('verified'));
  assert.ok(copilotAvailability({copilot:{available:true,provider:'Example',connection_verified:true}}).label.includes('verified'));
 });
 test('Local, temporary and unreported persistence have different promises',()=>{

@@ -82,7 +82,7 @@ export function verdictContext(test) {
 export function copilotAvailability(catalog) {
   const c=catalog?.copilot;
   if(!c?.available)return {available:false,label:'AI unavailable',message:'AI is not configured for this workspace. You can continue building, testing and exporting.'};
-  return {available:true,label:c.connection_verified?`${c.provider||'AI'} connection verified`:`${c.provider||'AI'} configured; connection unverified`,message:c.connection_verified?'Your request will use the context shown below.':'Availability is based on configuration. A provider response has not yet verified the connection.'};
+  return {available:true,label:c.connection_verified?`${c.provider||'AI'} connection verified`:`${c.provider||'AI'} AI ready`,message:c.connection_verified?'Your request will use the context shown below.':`${c.provider||'The AI'} is set up. Your first question confirms the live connection.`};
 }
 export function persistenceCopy(runtime) {
   if(runtime?.persistence==='browser_session')return {temporary:true,saved:'In this tab',description:'Temporary browser session. Export your test and download a design backup before closing this tab.'};
