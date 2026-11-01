@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VOLT-FORGE</title>
+<meta name="description" content="See what a battery decision changes, before you build it. A battery design workspace that runs in your browser.">
+<link rel="icon" href="app/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#10202F;--muted:#566575;--blue:#0B5FA8;--line:#D3DFE8;--card:#fff;--soft:#F2F7FB;--scrim:rgba(9,22,36,.62)}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#F6F8FA;font-family:Manrope,system-ui,sans-serif;color:var(--ink)}
+#app{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#F6F8FA}
+.scrim{position:fixed;inset:0;background:var(--scrim);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:16px;z-index:10;transition:opacity .25s ease}
+.scrim.hide{opacity:0;pointer-events:none}
+.card{position:relative;width:min(900px,100%);max-height:calc(100vh - 32px);overflow:auto;background:var(--card);border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.28);padding:26px 28px 22px}
+.close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:18px;border:1px solid var(--line);background:#fff;color:var(--muted);font-size:20px;line-height:1;cursor:pointer}
+.close:hover{color:var(--ink)}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+h1{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-.6px;margin:4px 0 4px;line-height:1.12;padding-right:36px}
+h1 em{font-style:normal;color:var(--blue)}
+.lead{font-size:16.5px;line-height:1.5;color:var(--muted);font-weight:500;margin:0 0 16px;max-width:680px}
+video{display:block;width:min(100%,calc(44vh * 16 / 9));aspect-ratio:16/9;margin:0 auto;background:#000;border-radius:14px;border:1px solid var(--line)}
+.opts{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0 12px}
+.opt{display:flex;flex-direction:column;gap:4px;text-align:left;padding:14px 14px 13px;border-radius:14px;border:1.5px solid var(--line);background:#fff;color:var(--ink);text-decoration:none;font:inherit;cursor:pointer;transition:border-color .15s,transform .15s,box-shadow .15s}
+.opt:hover,.opt:focus-visible{border-color:var(--blue);box-shadow:0 6px 18px rgba(11,95,168,.12);transform:translateY(-1px);outline:none}
+.opt .t{font-size:16px;font-weight:800;display:flex;align-items:center;gap:8px}
+.opt .d{font-size:13.5px;line-height:1.4;color:var(--muted);font-weight:500}
+.opt.main{background:var(--blue);border-color:var(--blue);color:#fff}
+.opt.main .d{color:#D6E8F7}
+.opt.main:hover,.opt.main:focus-visible{box-shadow:0 8px 22px rgba(11,95,168,.32)}
+.ico{display:inline-flex;width:22px;height:22px;border-radius:11px;align-items:center;justify-content:center;font-size:11px;background:var(--soft);color:var(--blue);flex:none}
+.opt.main .ico{background:rgba(255,255,255,.18);color:#fff}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;font-size:13px;color:var(--muted);font-weight:500}
+.status{display:inline-flex;align-items:center;gap:7px}
+.dot{width:8px;height:8px;border-radius:4px;background:#E0A21B;animation:pulse 1.2s infinite ease-in-out}
+.ready .dot{background:#1F9D5B;animation:none}
+@keyframes pulse{50%{opacity:.35}}
+@media (max-width:760px){.opts{grid-template-columns:1fr 1fr}.card{padding:20px 16px 16px}}
+@media (max-width:420px){.opts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.scrim,.opt{transition:none}.dot{animation:none}}
+</style>
+</head>
+<body>
+<iframe id="app" src="app/" title="VOLT-FORGE battery workspace"></iframe>
+
+<div class="scrim" id="welcome" role="dialog" aria-modal="true" aria-labelledby="welcome-title">
+  <div class="card">
+    <button class="close" id="close" aria-label="Close and explore">×</button>
+    <div class="eyebrow">Welcome to VOLT-FORGE</div>
+    <h1 id="welcome-title">See what a battery decision changes, <em>before you build it</em></h1>
+    <p class="lead">Wire real cells, run their electrical and heat behaviour together, push the design to its limits and compare it with another. Watch the one-minute tour, then pick where to start.</p>
+    <video src="demo.mp4" autoplay muted loop playsinline controls aria-label="A one-minute walkthrough of VOLT-FORGE"></video>
+    <div class="opts">
+      <button class="opt main" id="tour"><span class="t"><span class="ico">▶</span>Walkthrough demo</span><span class="d">A guided Raspberry Pi backup example, step by step</span></button>
+      <button class="opt" id="explore"><span class="t"><span class="ico">✦</span>Explore on your own</span><span class="d">Open the workspace and build any design</span></button>
+      <a class="opt" href="https://github.com/shu-aro/voltforge" target="_blank" rel="noopener"><span class="t"><span class="ico">&lt;/&gt;</span>See the code</span><span class="d">The full engine and app on GitHub</span></a>
+      <a class="opt" href="appendix" target="_blank" rel="noopener"><span class="t"><span class="ico">∑</span>Read the appendix</span><span class="d">Calculations, data and sources</span></a>
+    </div>
+    <div class="foot">
+      <span class="status" id="status"><span class="dot"></span><span id="status-text">The simulator is starting in your browser, about 15 seconds the first time</span></span>
+      <span>Team StratWise · Tata Elxsi Teliport Season 4 · Case Study 2</span>
+    </div>
+  </div>
+</div>
+
+<noscript><p style="position:fixed;bottom:0;left:0;right:0;margin:0;padding:12px;background:#fff;text-align:center"><a href="app/">Open the workspace</a> · <a href="https://github.com/shu-aro/voltforge">Code</a> · <a href="appendix">Appendix</a></p></noscript>
+
+<script>
+(() => {
+  const frame = document.getElementById('app');
+  const welcome = document.getElementById('welcome');
+  const status = document.getElementById('status');
+  const statusText = document.getElementById('status-text');
+  const video = welcome.querySelector('video');
+  let wantTour = false;
+
+  const appDoc = () => { try { return frame.contentDocument; } catch (e) { return null; } };
+  const appReady = () => { const d = appDoc(); return !!(d && d.querySelector('#app [data-act]')); };
+
+  function close() {
+    welcome.classList.add('hide');
+    welcome.setAttribute('aria-hidden', 'true');
+    if (video) video.pause();
+    setTimeout(() => { welcome.style.display = 'none'; frame.focus(); }, 260);
+  }
+  function startTour() {
+    const d = appDoc();
+    const root = d && d.querySelector('#app');
+    if (!root) return false;
+    const trigger = d.createElement('button');
+    trigger.type = 'button'; trigger.hidden = true; trigger.dataset.act = 'tour:start';
+    root.appendChild(trigger); trigger.click(); trigger.remove();
+    return true;
+  }
+
+  document.getElementById('close').addEventListener('click', close);
+  document.getElementById('explore').addEventListener('click', close);
+  document.getElementById('tour').addEventListener('click', () => {
+    close();
+    if (appReady()) startTour(); else wantTour = true;
+  });
+  welcome.addEventListener('click', e => { if (e.target === welcome) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && welcome.style.display !== 'none') close(); });
+
+  const poll = setInterval(() => {
+    if (!appReady()) return;
+    status.classList.add('ready');
+    statusText.textContent = 'Workspace ready';
+    if (wantTour) { wantTour = false; startTour(); }
+    clearInterval(poll);
+  }, 400);
+
+  document.getElementById('tour').focus({ preventScroll: true });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+{
+  "version": "voltforge.release-replay/1",
+  "software_hash": "97ca199f2fd21aacbc25cb51ea9e497ec4111cb0031d6064a40267e5d9be74e8",
+  "passed": true,
+  "checks": [
+    {
+      "name": "10 min \u00b7 8.42 A discharge",
+      "status": "completed",
+      "stop": null,
+      "peak_temperature_C": 27.47073970860489,
+      "first_law_closed": true,
+      "replay_passed": true,
+      "tampered_result_refused": true,
+      "tampered_model_refused": true
+    },
+    {
+      "name": "10 min \u00b7 8.42 A discharge",
+      "status": "completed",
+      "stop": null,
+      "peak_temperature_C": 24.551052526234535,
+      "first_law_closed": true,
+      "replay_passed": true,
+      "tampered_result_refused": true,
+      "tampered_model_refused": true
+    },
+    {
+      "name": "10 min \u00b7 12 A discharge",
+      "status": "completed",
+      "stop": null,
+      "peak_temperature_C": 31.154762580350972,
+      "first_law_closed": true,
+      "replay_passed": true,
+      "tampered_result_refused": true,
+      "tampered_model_refused": true
+    },
+    {
+      "name": "10 min \u00b7 2 A charge",
+      "status": "completed",
+      "stop": null,
+      "peak_temperature_C": 23.146513741963368,
+      "first_law_closed": true,
+      "replay_passed": true,
+      "tampered_result_refused": true,
+      "tampered_model_refused": true
+    },
+    {
+      "name": "26 min \u00b7 6 A discharge",
+      "status": "stopped",
+      "stop": "charge_domain",
+      "peak_temperature_C": 27.93633400200879,
+      "first_law_closed": true,
+      "replay_passed": true,
+      "tampered_result_refused": true,
+      "tampered_model_refused": true
+    }
+  ]
+}

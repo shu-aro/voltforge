@@ -1,0 +1,28 @@
+{
+  "public_url": "https://volt-forge-app.vercel.app",
+  "deployment": "https://volt-forge-2j6jdgm15-shu-aros-projects.vercel.app",
+  "static_assets": {
+    "index.html": {
+      "status": 200,
+      "sha256": "716dbfb464be1929eb240d205e913d61f28ad09c66fbd69c51e44ec9dc9424cc",
+      "matches_local_build": true
+    },
+    "app/worker.js": {
+      "status": 200,
+      "sha256": "c8647d0a47bb102ab2b040c0eefcf71d8090ccda0d09f90e23bcf0d3dda053ab",
+      "matches_local_build": true
+    },
+    "app/studio.js": {
+      "status": 200,
+      "sha256": "2aa7fbb2e8e1c367b753b402df5dace03fca0f52b4bc3ef48eedef8be7ea9706",
+      "matches_local_build": true
+    },
+    "app/engine.zip": {
+      "status": 200,
+      "sha256": "17a72267875aa1e78c1cc2736e91b89ae731a8bc4075df5fbaf9a0fb7ec68195",
+      "matches_local_build": true
+    }
+  },
+  "appendix_redirect": "https://docs.google.com/spreadsheets/d/1byhDFmM3Y7rHDYq_uZWy3oWRmRp5EIx5QVqF5Mqdp7E/edit?usp=sharing",
+  "environment_paths_status": 404
+}

@@ -1,0 +1,1 @@
+Reproduced 1201 samples. Numerical reproduction only; physical accuracy requires independent measurements.

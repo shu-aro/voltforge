@@ -1,0 +1,16 @@
+{
+  "study_complete": true,
+  "study_note": "4006/4006 rerun; 0 differing stored fields; largest numeric change 0",
+  "software_hash": "28c7e5b925453a6a402f056fd636c7c40aac5c5e059199f8be7aec3cfa09c07d",
+  "study_compared_numeric_values": 27832,
+  "study_differences": [],
+  "protected_artifacts": 649,
+  "protected_changed": [],
+  "test_note": "515 Python tests passed; 8 known skips; 74 JavaScript tests passed.",
+  "base_commit": "05adc81",
+  "javascript_tests": 74,
+  "python_passed": 515,
+  "python_skipped": 8,
+  "teammate_windows_software_hash": "2437f14ea7f583a9d406ed365b9b920d6aa8a035f6b0f49332dab2b7f553a0d2",
+  "hash_note": "The identical source bytes yield 28c7e5b... with slash relative-path keys on macOS and 2437f14... with backslash relative-path keys on Windows. Recomputed both digests. No tracked engine source differs from teammate commit 05adc81."
+}

@@ -1,0 +1,54 @@
+{
+  "public_url": "https://volt-forge-app.vercel.app/app/",
+  "browser": "Chromium headless 140.0.7339.16",
+  "manual_simulation": {
+    "duration_s": 600,
+    "samples": 1201,
+    "status": "completed",
+    "metrics": {
+      "peak_temperature_C": 24.551052526234535,
+      "warmest_cell": "cell1",
+      "warmest_time_s": 600.0,
+      "peak_cell_current_A": 2.6402001062558442,
+      "busiest_cell": "cell1",
+      "minimum_voltage_V": 3.701560696273785,
+      "final_voltage_V": 3.701560696273785,
+      "delivered_energy_Wh": 5.273593704292482,
+      "received_energy_Wh": 0.0,
+      "net_energy_Wh": 5.273593704292482,
+      "duration_s": 600.0,
+      "maximum_temperature_spread_C": 0.4040465743686177,
+      "imbalance_pct": 43.089090420742444,
+      "current_gap_A": 0.9067569532984523,
+      "conductor_mass_g": null
+    }
+  },
+  "ai_review_apply": {
+    "question": "Change room temperature to 30 C; keep the rest unchanged.",
+    "proposal": "settings.ambient_C 23 -> 30, one change",
+    "applied": true,
+    "old_result_marked_historical": true,
+    "immutable_saved_ambient_C": 23.0,
+    "editable_backup_ambient_C": 30
+  },
+  "export": {
+    "zip_downloaded": true,
+    "html_report_svg_charts": 3,
+    "replay": "1201 samples reproduced using bundled source and models"
+  },
+  "design_backup": {
+    "downloaded": true,
+    "imported_as_new_copy": true,
+    "opened_name": "Guided Pi 5 backup recovered copy"
+  },
+  "limits": "Bounded desktop flow; not an exhaustive browser, mobile or accessibility audit.",
+  "latest_deployment": "https://volt-forge-2j6jdgm15-shu-aros-projects.vercel.app",
+  "chrome156": {
+    "public_startup": "passed",
+    "live_ai_construction": "4-cell LG M50T parallel draft opened automatically on canvas with 70% / 23 C / 8.42 A / 600 s",
+    "provider_status_after_success": "Groq connection verified",
+    "note": "The initial invalid component target was safely rejected; the retried request passed after stable target IDs were constrained.",
+    "ai_created_draft_simulation": "Completed 600 s at 8.42 A, with no acceptance targets configured, correctly disclosed by UI.",
+    "screenshot": "browser/chrome156-live-result.png"
+  }
+}
